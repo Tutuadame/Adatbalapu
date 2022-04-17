@@ -1,2 +1,65 @@
 .proflink{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 50%;
+    margin-top: 10%;
+    
+}
+#profhead, #messagehead, #adverthead{
+    text-align: center;
+    margin-top: 70%;
+    border: solid rgb(0, 0, 0);
+    border-radius: 80px ;
+    transform: scale(1.5);
+    width: 80%;
+    height: 55%;
+}
+
+#profhead p, #messagehead p, #adverthead p{
+    margin-top: 11%;
+    font-size: 140%;
+}
+#messagehead p, #adverthead p{
+    padding-bottom: 5%;
+}
+#messagehead{
+    background-color: rgb(199, 136, 42);
+}
+
+.col-sm{
+    margin: 3%;
+}
+.messagetitle{
+    margin: auto;
+    margin-top: 25%;
+    padding-bottom: 10%;
+    font-size: 200%;
+}
+body{
+    background-color:#acd6e0;
+}
+#profmenu-container{
+    width: 30%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.profmenu{
+    text-decoration: none;
+    color: black;
+    padding: 6%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-top: 5%;
+    border: solid black;
+    background-color: rgb(13, 202, 240);
+}
+.profmenu:hover{
+    text-decoration: none;
+    color: yellow;
+}
+.profmenu:hover:last-child{
+    text-decoration: none;
+    color: rgb(199, 136, 42);
 }
