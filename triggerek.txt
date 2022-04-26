@@ -1,0 +1,105 @@
+CREATE OR REPLACE TRIGGER del_allaskereso
+BEFORE DELETE ON Allaskereso
+FOR EACH ROW
+DECLARE
+    counter number;
+BEGIN
+    SELECT COUNT(a_mail) into counter FROM Hirdetes WHERE a_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Hirdetes set a_mail='Torolt' WHERE a_mail=:OLD.email;
+    END IF;
+    
+    SELECT COUNT(a_felado_mail) into counter FROM Uzenet WHERE a_felado_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Uzenet set a_felado_mail='Torolt' WHERE a_felado_mail=:OLD.email;
+    END IF;
+    
+    SELECT COUNT(a_cimzett_mail) into counter FROM Uzenet WHERE a_cimzett_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Uzenet set a_cimzett_mail='Torolt' WHERE a_cimzett_mail=:OLD.email;
+    END IF;
+    
+    SELECT COUNT(a_mail) into counter FROM CV WHERE a_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE CV set a_mail='Torolt' WHERE a_mail=:OLD.email;
+    END IF;
+    
+END;
+
+CREATE OR REPLACE TRIGGER del_ceg
+BEFORE DELETE ON Ceg2
+FOR EACH ROW
+DECLARE
+    counter number;
+BEGIN
+    SELECT COUNT(c_mail) into counter FROM Hirdetes WHERE c_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Hirdetes set c_mail='Torolt' WHERE c_mail=:OLD.email;
+    END IF;
+    
+    SELECT COUNT(c_felado_mail) into counter FROM Uzenet WHERE c_felado_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Uzenet set c_felado_mail='Torolt' WHERE c_felado_mail=:OLD.email;
+    END IF;
+    
+    SELECT COUNT(c_cimzett_mail) into counter FROM Uzenet WHERE c_cimzett_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Uzenet set c_cimzett_mail='Torolt' WHERE c_cimzett_mail=:OLD.email;
+    END IF;
+    
+END;
+
+
+CREATE OR REPLACE TRIGGER del_adminisztrator
+BEFORE DELETE ON Adminisztrator
+FOR EACH ROW
+DECLARE
+    counter number;
+BEGIN
+    SELECT COUNT(ad_mail) into counter FROM Hirdetes WHERE ad_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Hirdetes set ad_mail='Torolt' WHERE ad_mail=:OLD.email;
+    END IF;
+    
+    SELECT COUNT(ad_felado_mail) into counter FROM Uzenet WHERE ad_felado_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Uzenet set ad_felado_mail='Torolt' WHERE ad_felado_mail=:OLD.email;
+    END IF;
+    
+    SELECT COUNT(ad_cimzett_mail) into counter FROM Uzenet WHERE ad_cimzett_mail=:OLD.email;
+    IF counter > 0 THEN
+        UPDATE Uzenet set ad_cimzett_mail='Torolt' WHERE ad_cimzett_mail=:OLD.email;
+    END IF;
+    
+END;
+
+CREATE OR REPLACE TRIGGER del_hirdetes
+BEFORE DELETE ON Hirdetes
+FOR EACH ROW
+DECLARE
+    counter number;
+BEGIN
+    SELECT COUNT(h_id) into counter FROM Jelentkezes WHERE h_id=:OLD.h_id;
+    IF counter > 0 THEN
+        DELETE FROM jelentkezes WHERE h_id=:OLD.h_id;
+    END IF;
+    
+END;
+
+
+CREATE OR REPLACE TRIGGER del_telepules
+BEFORE DELETE ON Telepules
+FOR EACH ROW
+DECLARE
+    counter number;
+BEGIN
+    SELECT COUNT(iranyitoszam) into counter FROM Ceg2 WHERE iranyitoszam=:OLD.iranyitoszam;
+    IF counter > 0 THEN
+        UPDATE Ceg2 set iranyitoszam='Torolt' WHERE iranyitoszam=:OLD.iranyitoszam;
+    END IF;
+    
+    SELECT COUNT(iranyitoszam) into counter FROM Hirdetes WHERE iranyitoszam=:OLD.iranyitoszam;
+    IF counter > 0 THEN
+        UPDATE Hirdetes set iranyitoszam='Torolt' WHERE iranyitoszam=:OLD.iranyitoszam;
+    END IF;
+END;
