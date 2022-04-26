@@ -1,0 +1,17 @@
+body{
+    background-color: LemonChiffon;
+    color: FireBrick;
+}
+
+table {
+    border-color: FireBrick;
+    border-style: solid;
+    border-width: 1pt;
+    border-spacing: 10pt;
+}
+
+
+h2 {
+    font-size: 14pt;
+    font-weight: bold;
+}
